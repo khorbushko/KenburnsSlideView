@@ -1,0 +1,335 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		93349C181D9E2D5B00022433 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93349C171D9E2D5B00022433 /* AppDelegate.swift */; };
+		93349C1A1D9E2D5B00022433 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93349C191D9E2D5B00022433 /* ViewController.swift */; };
+		93349C1D1D9E2D5B00022433 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93349C1B1D9E2D5B00022433 /* Main.storyboard */; };
+		93349C1F1D9E2D5B00022433 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93349C1E1D9E2D5B00022433 /* Assets.xcassets */; };
+		93349C221D9E2D5B00022433 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93349C201D9E2D5B00022433 /* LaunchScreen.storyboard */; };
+		93349C2B1D9E2D8F00022433 /* SlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93349C2A1D9E2D8F00022433 /* SlideView.swift */; };
+		93349C2D1D9E2D9A00022433 /* SlideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93349C2C1D9E2D9A00022433 /* SlideView.xib */; };
+		93349C2F1D9E2DC100022433 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93349C2E1D9E2DC100022433 /* BaseView.swift */; };
+		93349C311D9E2E7C00022433 /* UIView+AddSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93349C301D9E2E7C00022433 /* UIView+AddSubview.swift */; };
+		93349C331D9E308300022433 /* SlideScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93349C321D9E308300022433 /* SlideScrollView.swift */; };
+		93349C381D9EA98D00022433 /* SlideTileObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93349C371D9EA98D00022433 /* SlideTileObject.swift */; };
+		93349C3C1D9EAAEA00022433 /* SlideTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93349C3B1D9EAAEA00022433 /* SlideTileView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		93349C141D9E2D5B00022433 /* testSlideFadeOutView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testSlideFadeOutView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		93349C171D9E2D5B00022433 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		93349C191D9E2D5B00022433 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		93349C1C1D9E2D5B00022433 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		93349C1E1D9E2D5B00022433 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		93349C211D9E2D5B00022433 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		93349C231D9E2D5B00022433 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93349C2A1D9E2D8F00022433 /* SlideView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideView.swift; sourceTree = "<group>"; };
+		93349C2C1D9E2D9A00022433 /* SlideView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SlideView.xib; sourceTree = "<group>"; };
+		93349C2E1D9E2DC100022433 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		93349C301D9E2E7C00022433 /* UIView+AddSubview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubview.swift"; sourceTree = "<group>"; };
+		93349C321D9E308300022433 /* SlideScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideScrollView.swift; sourceTree = "<group>"; };
+		93349C371D9EA98D00022433 /* SlideTileObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideTileObject.swift; sourceTree = "<group>"; };
+		93349C3B1D9EAAEA00022433 /* SlideTileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideTileView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		93349C111D9E2D5B00022433 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		93349C0B1D9E2D5B00022433 = {
+			isa = PBXGroup;
+			children = (
+				93349C161D9E2D5B00022433 /* testSlideFadeOutView */,
+				93349C151D9E2D5B00022433 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		93349C151D9E2D5B00022433 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				93349C141D9E2D5B00022433 /* testSlideFadeOutView.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		93349C161D9E2D5B00022433 /* testSlideFadeOutView */ = {
+			isa = PBXGroup;
+			children = (
+				93349C171D9E2D5B00022433 /* AppDelegate.swift */,
+				93349C191D9E2D5B00022433 /* ViewController.swift */,
+				93349C2E1D9E2DC100022433 /* BaseView.swift */,
+				93349C301D9E2E7C00022433 /* UIView+AddSubview.swift */,
+				93349C291D9E2D8400022433 /* SlideView */,
+				93349C1B1D9E2D5B00022433 /* Main.storyboard */,
+				93349C1E1D9E2D5B00022433 /* Assets.xcassets */,
+				93349C201D9E2D5B00022433 /* LaunchScreen.storyboard */,
+				93349C231D9E2D5B00022433 /* Info.plist */,
+			);
+			path = testSlideFadeOutView;
+			sourceTree = "<group>";
+		};
+		93349C291D9E2D8400022433 /* SlideView */ = {
+			isa = PBXGroup;
+			children = (
+				93349C371D9EA98D00022433 /* SlideTileObject.swift */,
+				93349C3B1D9EAAEA00022433 /* SlideTileView.swift */,
+				93349C321D9E308300022433 /* SlideScrollView.swift */,
+				93349C2A1D9E2D8F00022433 /* SlideView.swift */,
+				93349C2C1D9E2D9A00022433 /* SlideView.xib */,
+			);
+			path = SlideView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		93349C131D9E2D5B00022433 /* testSlideFadeOutView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 93349C261D9E2D5B00022433 /* Build configuration list for PBXNativeTarget "testSlideFadeOutView" */;
+			buildPhases = (
+				93349C101D9E2D5B00022433 /* Sources */,
+				93349C111D9E2D5B00022433 /* Frameworks */,
+				93349C121D9E2D5B00022433 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = testSlideFadeOutView;
+			productName = testSlideFadeOutView;
+			productReference = 93349C141D9E2D5B00022433 /* testSlideFadeOutView.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		93349C0C1D9E2D5B00022433 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "- present SigmaSoftware";
+				TargetAttributes = {
+					93349C131D9E2D5B00022433 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 93349C0F1D9E2D5B00022433 /* Build configuration list for PBXProject "testSlideFadeOutView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 93349C0B1D9E2D5B00022433;
+			productRefGroup = 93349C151D9E2D5B00022433 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				93349C131D9E2D5B00022433 /* testSlideFadeOutView */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		93349C121D9E2D5B00022433 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93349C221D9E2D5B00022433 /* LaunchScreen.storyboard in Resources */,
+				93349C2D1D9E2D9A00022433 /* SlideView.xib in Resources */,
+				93349C1F1D9E2D5B00022433 /* Assets.xcassets in Resources */,
+				93349C1D1D9E2D5B00022433 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		93349C101D9E2D5B00022433 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93349C3C1D9EAAEA00022433 /* SlideTileView.swift in Sources */,
+				93349C2B1D9E2D8F00022433 /* SlideView.swift in Sources */,
+				93349C1A1D9E2D5B00022433 /* ViewController.swift in Sources */,
+				93349C311D9E2E7C00022433 /* UIView+AddSubview.swift in Sources */,
+				93349C181D9E2D5B00022433 /* AppDelegate.swift in Sources */,
+				93349C2F1D9E2DC100022433 /* BaseView.swift in Sources */,
+				93349C381D9EA98D00022433 /* SlideTileObject.swift in Sources */,
+				93349C331D9E308300022433 /* SlideScrollView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		93349C1B1D9E2D5B00022433 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				93349C1C1D9E2D5B00022433 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		93349C201D9E2D5B00022433 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				93349C211D9E2D5B00022433 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		93349C241D9E2D5B00022433 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		93349C251D9E2D5B00022433 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		93349C271D9E2D5B00022433 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = testSlideFadeOutView/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rainbowElephant.slideView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "843561a5-67a5-4ccf-8ef6-17b9ab8f398a";
+			};
+			name = Debug;
+		};
+		93349C281D9E2D5B00022433 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = testSlideFadeOutView/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rainbowElephant.slideView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "843561a5-67a5-4ccf-8ef6-17b9ab8f398a";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		93349C0F1D9E2D5B00022433 /* Build configuration list for PBXProject "testSlideFadeOutView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93349C241D9E2D5B00022433 /* Debug */,
+				93349C251D9E2D5B00022433 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		93349C261D9E2D5B00022433 /* Build configuration list for PBXNativeTarget "testSlideFadeOutView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93349C271D9E2D5B00022433 /* Debug */,
+				93349C281D9E2D5B00022433 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 93349C0C1D9E2D5B00022433 /* Project object */;
+}
