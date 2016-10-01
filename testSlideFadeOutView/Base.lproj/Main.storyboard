@@ -21,16 +21,27 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXg-gU-8ek" customClass="ScalablePageControl" customModule="testSlideFadeOutView" customModuleProvider="target">
+                                <rect key="frame" x="16" y="513" width="568" height="37"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="Cxi-sn-3ak"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="aXg-gU-8ek" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="27y-tE-k87"/>
                             <constraint firstItem="0aE-MX-Jyu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2S3-dY-1pr"/>
                             <constraint firstAttribute="trailing" secondItem="0aE-MX-Jyu" secondAttribute="trailing" id="6p7-aN-WZy"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="aXg-gU-8ek" secondAttribute="bottom" constant="50" id="BNa-j4-uaR"/>
                             <constraint firstItem="0aE-MX-Jyu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="NaR-ud-u2e"/>
+                            <constraint firstAttribute="trailing" secondItem="aXg-gU-8ek" secondAttribute="trailing" constant="16" id="iHG-Ps-rf1"/>
                             <constraint firstAttribute="bottom" secondItem="0aE-MX-Jyu" secondAttribute="bottom" id="xuy-Wm-1fl"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="pageControl" destination="aXg-gU-8ek" id="YKO-7S-5mY"/>
                         <outlet property="slideView" destination="0aE-MX-Jyu" id="euc-cd-DIv"/>
                     </connections>
                 </viewController>

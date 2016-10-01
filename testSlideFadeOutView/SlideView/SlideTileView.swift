@@ -8,9 +8,7 @@
 
 import UIKit
 
-//for subclassing
-
-class SlideTileView : UIView {
+final class SlideTileView : UIView {
     
     var titleLabel:UILabel = UILabel()
     
@@ -34,17 +32,20 @@ class SlideTileView : UIView {
         titleLabel.text = tile.title
     }
     
-    func prepareTileForReuse() { //<- override Point. DO NOT CALL SUPER
+    // MARK: - Private
+    
+    private func prepareTileForReuse() {
         titleLabel.text = ""
     }
     
-    func configureTile(slideTileObject:SlideTileObject?) { //<- override Point DO NOT CALL SUPER
+    private func configureTile(slideTileObject:SlideTileObject?) {
+        prepareTileForReuse()
         if let object = slideTileObject {
             titleLabel.text = object.title
         }
     }
     
-    func prepareSubviews() { //<- override Point DO NOT CALL SUPER
+    private func prepareSubviews() {
         titleLabel.textColor = UIColor.whiteColor()
         titleLabel.font = UIFont.systemFontOfSize(25)
         titleLabel.textAlignment = .Center
@@ -57,4 +58,5 @@ class SlideTileView : UIView {
         constraints.appendContentsOf(NSLayoutConstraint.constraintsWithVisualFormat("V:|-350-[subview]-100-|", options: [.AlignAllTop, .AlignAllBottom], metrics: nil, views: views))
         NSLayoutConstraint.activateConstraints(constraints)
     }
+    
 }

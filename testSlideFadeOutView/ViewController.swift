@@ -9,8 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
     @IBOutlet weak var slideView: SlideView!
-
+    @IBOutlet weak var pageControl: ScalablePageControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,11 +50,36 @@ class ViewController: UIViewController {
 extension ViewController: SlideViewDelegate {
     // MARK: - SlideViewDelegate
     func slideView(slideView: SlideView, downloadImageURL: NSURL, completion: ((image: UIImage) -> Void)) {
-        if let data = NSData(contentsOfURL: downloadImageURL) {
-            if let imageFromData = UIImage(data: data) {
-                completion(image: imageFromData)
+        dispatch_async(dispatch_get_main_queue(), {
+            if let data = NSData(contentsOfURL: downloadImageURL) {
+                if let imageFromData = UIImage(data: data) {
+                    completion(image: imageFromData)
+                }
             }
-        }
+        })
     }
+    
+    func slideView(slideView:SlideView, didScrollToProgress:CGFloat, transition:Transition, currentPage:Int) {
+        print("scrollFrom - \(currentPage) to " + (transition == .Next ? "\(currentPage + 1)" : "\(currentPage - 1)"))
+        pageControl.updateItem(currentPage, withTransition: transition, withCurrentPorgress: didScrollToProgress)
+    }
+    
+    func slideView(slideView:SlideView, didShowItem displayItem:Int) {
+        print("SHOW - \(displayItem)")
+        pageControl.selectedPage = displayItem
+    }
+
+    
+//    func slideView(slideView:SlideView, didScrollToProgress:CGFloat, leftScroll:Bool, currentPage:Int) {
+////        print("\(didScrollToProgress)")
+//        
+////        pageControl.progress = didScrollToProgress
+//        
+//        pageControl.updateItem(currentPage, withTransition: leftScroll == true ? .Previous : .Next , withCurrentPorgress: didScrollToProgress)
+//    }
+//    
+//    func slideView(slideView: SlideView, didEndScrolling currentPage: Int) {
+//        pageControl.selectedPage = currentPage
+//    }
 }
 

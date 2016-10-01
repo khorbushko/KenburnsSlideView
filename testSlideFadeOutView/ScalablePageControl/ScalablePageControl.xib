@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScalablePageControl">
+            <connections>
+                <outlet property="collectionVIew" destination="VSV-sL-YD1" id="vVV-OB-F20"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9At-bh-FoW">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="VSV-sL-YD1">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="6Gs-u9-bDa">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="Dnm-Hf-MGK"/>
+                                <outlet property="delegate" destination="-1" id="shD-iB-vSO"/>
+                            </connections>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="VSV-sL-YD1" secondAttribute="bottom" id="2OP-4k-5D6"/>
+                        <constraint firstItem="VSV-sL-YD1" firstAttribute="top" secondItem="9At-bh-FoW" secondAttribute="top" id="6eX-mr-HWM"/>
+                        <constraint firstAttribute="trailing" secondItem="VSV-sL-YD1" secondAttribute="trailing" id="aJM-Vy-LVG"/>
+                        <constraint firstItem="VSV-sL-YD1" firstAttribute="leading" secondItem="9At-bh-FoW" secondAttribute="leading" id="syP-YG-uKI"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="9At-bh-FoW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="21i-F1-gSQ"/>
+                <constraint firstAttribute="bottom" secondItem="9At-bh-FoW" secondAttribute="bottom" id="6C9-nP-jol"/>
+                <constraint firstItem="9At-bh-FoW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="o0G-f5-9EO"/>
+                <constraint firstAttribute="trailing" secondItem="9At-bh-FoW" secondAttribute="trailing" id="zau-wS-9zX"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="496" y="231"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ScalablePageControlCollectionViewCell" id="A3m-1U-7up" customClass="ScalablePageControlCollectionViewCell" customModule="testSlideFadeOutView" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mIL-Go-1TM" userLabel="Root - UIView">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cz7-QK-yCj" userLabel="FakeDot - View">
+                                <rect key="frame" x="20" y="20" width="10" height="10"/>
+                                <color key="backgroundColor" red="0.93333333730000001" green="0.03529411927" blue="0.20000000300000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="10" id="Ti1-uV-xQf"/>
+                                    <constraint firstAttribute="height" constant="10" id="e4q-m2-TY9"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cz7-QK-yCj" firstAttribute="centerX" secondItem="mIL-Go-1TM" secondAttribute="centerX" id="cyY-RA-bzZ"/>
+                            <constraint firstItem="cz7-QK-yCj" firstAttribute="centerY" secondItem="mIL-Go-1TM" secondAttribute="centerY" id="hlt-B3-BWJ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="mIL-Go-1TM" secondAttribute="trailing" id="1kr-m5-UQV"/>
+                <constraint firstItem="mIL-Go-1TM" firstAttribute="top" secondItem="A3m-1U-7up" secondAttribute="top" id="2ho-jz-0od"/>
+                <constraint firstAttribute="bottom" secondItem="mIL-Go-1TM" secondAttribute="bottom" id="EBa-nu-Qc7"/>
+                <constraint firstItem="mIL-Go-1TM" firstAttribute="leading" secondItem="A3m-1U-7up" secondAttribute="leading" id="pFq-vt-2WR"/>
+            </constraints>
+            <connections>
+                <outlet property="fakeDotView" destination="cz7-QK-yCj" id="8K0-Kf-EtV"/>
+            </connections>
+            <point key="canvasLocation" x="329" y="385"/>
+        </collectionViewCell>
+    </objects>
+</document>

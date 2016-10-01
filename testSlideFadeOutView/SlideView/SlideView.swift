@@ -10,6 +10,8 @@ import UIKit
 
 protocol SlideViewDelegate {
     func slideView(slideView:SlideView, downloadImageURL:NSURL, completion:((image:UIImage)->Void))
+    func slideView(slideView:SlideView, didScrollToProgress:CGFloat, transition:Transition, currentPage:Int)
+    func slideView(slideView:SlideView, didShowItem displayItem:Int)
 }
 
 final class SlideView: BaseView {
@@ -27,15 +29,21 @@ final class SlideView: BaseView {
     private var gradientLayer:CAGradientLayer = CAGradientLayer()
     
     private var imageViews:NSMutableArray = []  //views with images
-    private var tileViews:NSMutableArray = [] //objects to display each view info - tbd SlideTileView as parent
+    private var tileViews:NSMutableArray = []   //objects to display each view info
     
     var delegate:SlideViewDelegate?
     var currentPage:Int = 0
-    var imagesData: [SlideTileObject] = [] {//objects to hold each view info - tbd
+    var imagesData: [SlideTileObject] = [] {    //objects to hold each view info
         didSet {
             updateImages()
         }
     }
+    
+    private var currentDisplayItem:Int = 0
+    
+    var previousDirection:Transition = .Unknown
+    var stabilityCounter:Int = 0
+
     
     // MARK: - LifeCycle
     
@@ -86,14 +94,8 @@ final class SlideView: BaseView {
     
             scrollView.addSubview(tileView)
         }
-    
-        coverView.removeFromSuperview()
-        coverView = UIView(frame: bounds)
-        coverView.backgroundColor = UIColor(white: 0, alpha: 0.7)
-        coverView.alpha = 0
         
         gradientLayer.removeFromSuperlayer()
-        
         let rect = CGRectMake(0, 0, scrollView.contentSize.width, scrollView.contentSize.height)
         gradientLayer.frame = rect
         gradientLayer.colors = [
@@ -104,11 +106,13 @@ final class SlideView: BaseView {
         gradientLayer.locations = [0.4, 0.6, 1]
         scrollView.layer.insertSublayer(gradientLayer, atIndex: 0)
         
+        coverView.removeFromSuperview()
+        coverView = UIView(frame: bounds)
+        coverView.backgroundColor = UIColor(white: 0, alpha: 0.7)
+        coverView.alpha = 0
         addSubview(coverView)
         
         updateImages()
-        
-        //bg config tbd
     }
     
     private func updateImages(selectedIndex:Int = 0) {
@@ -158,7 +162,6 @@ final class SlideView: BaseView {
                 })
             }
         }
-        //todo
     }
     
     private func tileAtIndex(tileIndex:Int) -> SlideTileObject? {
@@ -195,8 +198,6 @@ extension SlideView: UIScrollViewDelegate {
                 alpha = 1.0
             }
             
-            print("\(1 - alpha)")
-            
             let gradientAlpha = sin (Double((180 * fabsf(Float(diff)) )) * M_PI / 180.0) - 0.4
             coverView.alpha = CGFloat(gradientAlpha)
             
@@ -205,17 +206,35 @@ extension SlideView: UIScrollViewDelegate {
                     let previousView = imageViews[Order.Previous.rawValue] as? UIImageView,
                     let nextView = imageViews[Order.Next.rawValue] as? UIImageView {
                     
+                    var direction:Transition = .Next
                     if (scrollView.contentOffset.x - width) < 0 {
                         //drag right
                         currentView.alpha = CGFloat(alpha)
                         previousView.alpha = 1
                         nextView.alpha = 0
+                        
+                        direction = .Previous
                     } else {
                         //drag left
                         currentView.alpha = CGFloat(alpha)
                         previousView.alpha = 0
                         nextView.alpha = 1
+                        
+                        direction = .Next
                     }
+                    
+                    if previousDirection == .Unknown {
+                        previousDirection = direction
+                    }
+                    if previousDirection != direction {
+                        stabilityCounter += 1
+                        if stabilityCounter == 7 {
+                            previousDirection = direction
+                            stabilityCounter = 0
+                        }
+                    }
+                    
+                    delegate?.slideView(self, didScrollToProgress: CGFloat(1 - alpha), transition: previousDirection, currentPage: currentDisplayItem)
                 }
             }
             
@@ -269,6 +288,8 @@ extension SlideView: SlideScrollViewDelegate {
                 nextTile.updateWithTile(nextImage)
             }
         }
+        currentDisplayItem += 1
+        delegate?.slideView(self, didShowItem: currentDisplayItem)
     }
     
     private func updatePreviousView(view:UIImageView) {
@@ -315,6 +336,9 @@ extension SlideView: SlideScrollViewDelegate {
                 nextTile.updateWithTile(nextImage)
             }
         }
+        
+        currentDisplayItem -= 1
+        delegate?.slideView(self, didShowItem: currentDisplayItem)
     }
     
     private func updateVisibilityPosition() {
@@ -335,12 +359,3 @@ extension SlideView: SlideScrollViewDelegate {
     }
     
 }
-
-
-
-
-
-
-
-
-

@@ -19,6 +19,11 @@
 		93349C331D9E308300022433 /* SlideScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93349C321D9E308300022433 /* SlideScrollView.swift */; };
 		93349C381D9EA98D00022433 /* SlideTileObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93349C371D9EA98D00022433 /* SlideTileObject.swift */; };
 		93349C3C1D9EAAEA00022433 /* SlideTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93349C3B1D9EAAEA00022433 /* SlideTileView.swift */; };
+		93349C411D9F04DE00022433 /* ScalablePageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93349C401D9F04DE00022433 /* ScalablePageControl.swift */; };
+		93349C431D9F04E700022433 /* ScalablePageControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93349C421D9F04E700022433 /* ScalablePageControl.xib */; };
+		93349C451D9F05C000022433 /* ScalablePageControlCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93349C441D9F05C000022433 /* ScalablePageControlCollectionViewCell.swift */; };
+		93349C471D9F05EA00022433 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93349C461D9F05EA00022433 /* BaseCollectionViewCell.swift */; };
+		93349C491D9F061700022433 /* ScalablePageControlCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93349C481D9F061700022433 /* ScalablePageControlCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +41,11 @@
 		93349C321D9E308300022433 /* SlideScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideScrollView.swift; sourceTree = "<group>"; };
 		93349C371D9EA98D00022433 /* SlideTileObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideTileObject.swift; sourceTree = "<group>"; };
 		93349C3B1D9EAAEA00022433 /* SlideTileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideTileView.swift; sourceTree = "<group>"; };
+		93349C401D9F04DE00022433 /* ScalablePageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalablePageControl.swift; sourceTree = "<group>"; };
+		93349C421D9F04E700022433 /* ScalablePageControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScalablePageControl.xib; sourceTree = "<group>"; };
+		93349C441D9F05C000022433 /* ScalablePageControlCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalablePageControlCollectionViewCell.swift; sourceTree = "<group>"; };
+		93349C461D9F05EA00022433 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		93349C481D9F061700022433 /* ScalablePageControlCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScalablePageControlCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +82,8 @@
 				93349C191D9E2D5B00022433 /* ViewController.swift */,
 				93349C2E1D9E2DC100022433 /* BaseView.swift */,
 				93349C301D9E2E7C00022433 /* UIView+AddSubview.swift */,
+				93349C461D9F05EA00022433 /* BaseCollectionViewCell.swift */,
+				93349C3F1D9F04D200022433 /* ScalablePageControl */,
 				93349C291D9E2D8400022433 /* SlideView */,
 				93349C1B1D9E2D5B00022433 /* Main.storyboard */,
 				93349C1E1D9E2D5B00022433 /* Assets.xcassets */,
@@ -91,6 +103,17 @@
 				93349C2C1D9E2D9A00022433 /* SlideView.xib */,
 			);
 			path = SlideView;
+			sourceTree = "<group>";
+		};
+		93349C3F1D9F04D200022433 /* ScalablePageControl */ = {
+			isa = PBXGroup;
+			children = (
+				93349C441D9F05C000022433 /* ScalablePageControlCollectionViewCell.swift */,
+				93349C481D9F061700022433 /* ScalablePageControlCollectionViewCell.xib */,
+				93349C401D9F04DE00022433 /* ScalablePageControl.swift */,
+				93349C421D9F04E700022433 /* ScalablePageControl.xib */,
+			);
+			path = ScalablePageControl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,7 +176,9 @@
 			files = (
 				93349C221D9E2D5B00022433 /* LaunchScreen.storyboard in Resources */,
 				93349C2D1D9E2D9A00022433 /* SlideView.xib in Resources */,
+				93349C431D9F04E700022433 /* ScalablePageControl.xib in Resources */,
 				93349C1F1D9E2D5B00022433 /* Assets.xcassets in Resources */,
+				93349C491D9F061700022433 /* ScalablePageControlCollectionViewCell.xib in Resources */,
 				93349C1D1D9E2D5B00022433 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -169,7 +194,10 @@
 				93349C2B1D9E2D8F00022433 /* SlideView.swift in Sources */,
 				93349C1A1D9E2D5B00022433 /* ViewController.swift in Sources */,
 				93349C311D9E2E7C00022433 /* UIView+AddSubview.swift in Sources */,
+				93349C471D9F05EA00022433 /* BaseCollectionViewCell.swift in Sources */,
 				93349C181D9E2D5B00022433 /* AppDelegate.swift in Sources */,
+				93349C411D9F04DE00022433 /* ScalablePageControl.swift in Sources */,
+				93349C451D9F05C000022433 /* ScalablePageControlCollectionViewCell.swift in Sources */,
 				93349C2F1D9E2DC100022433 /* BaseView.swift in Sources */,
 				93349C381D9EA98D00022433 /* SlideTileObject.swift in Sources */,
 				93349C331D9E308300022433 /* SlideScrollView.swift in Sources */,
@@ -328,6 +356,7 @@
 				93349C281D9E2D5B00022433 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

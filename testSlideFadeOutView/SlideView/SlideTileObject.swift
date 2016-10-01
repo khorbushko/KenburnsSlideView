@@ -8,9 +8,7 @@
 
 import UIKit
 
-//for subclassing
-
-class SlideTileObject {
+final class SlideTileObject {
     
     var image:UIImage?
     var title:String?
