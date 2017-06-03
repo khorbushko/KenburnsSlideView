@@ -1,6 +1,6 @@
 //
 //  SlideTileObject.swift
-//  testSlideFadeOutView
+//  
 //
 //  Created by Kirill Gorbushko on 30.09.16.
 //  Copyright © 2016 - present SigmaSoftware. All rights reserved.
@@ -13,11 +13,11 @@ final class SlideTileObject {
     var image:UIImage?
     var title:String?
     var subtitle:String?
-    var imageURL:NSURL?
+    var imageURL:URL?
     
    // MARK: - LifeCycle
     
-    convenience init(image:UIImage?, title:String?, subtitle:String?, imageURL:NSURL?) {
+    convenience init(image:UIImage?, title:String?, subtitle:String?, imageURL:URL?) {
         self.init()
         
         self.image = image

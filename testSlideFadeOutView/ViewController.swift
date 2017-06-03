@@ -29,10 +29,10 @@ class ViewController: UIViewController {
             obj.append(tileObject)
         }
 
-        if let url = NSURL(string: "https://3.bp.blogspot.com/-W__wiaHUjwI/Vt3Grd8df0I/AAAAAAAAA78/7xqUNj8ujtY/s1600/image02.png") {
-            let tileObject = SlideTileObject(image: nil, title: "Item \(url)", subtitle: "Subtitle", imageURL: url)
-            obj.append(tileObject)
-        }
+//        if let url = NSURL(string: "https://3.bp.blogspot.com/-W__wiaHUjwI/Vt3Grd8df0I/AAAAAAAAA78/7xqUNj8ujtY/s1600/image02.png") {
+//            let tileObject = SlideTileObject(image: nil, title: "Item \(url)", subtitle: "Subtitle", imageURL: url)
+//            obj.append(tileObject)
+//        }
         
 
         slideView.imagesData = obj
@@ -49,27 +49,28 @@ class ViewController: UIViewController {
 
 extension ViewController: SlideViewDelegate {
     // MARK: - SlideViewDelegate
-    func slideView(slideView: SlideView, downloadImageURL: NSURL, completion: ((image: UIImage) -> Void)) {
-        dispatch_async(dispatch_get_main_queue(), {
-            if let data = NSData(contentsOfURL: downloadImageURL) {
+    func slideView(_ slideView: SlideView, downloadImageURL: URL, completion: ((_ image: UIImage) -> Void)) {
+        DispatchQueue.main.async(execute: {
+            if let data = try? Data(contentsOf: downloadImageURL) {
                 if let imageFromData = UIImage(data: data) {
-                    completion(image: imageFromData)
+//                   // completion(image: imageFromData)
                 }
             }
         })
     }
     
-    func slideView(slideView:SlideView, didScrollToProgress:CGFloat, transition:Transition, currentPage:Int) {
-        print("scrollFrom - \(currentPage) to " + (transition == .Next ? "\(currentPage + 1)" : "\(currentPage - 1)"))
+    func slideView(_ slideView:SlideView, didScrollToProgress:CGFloat, transition:Transition, currentPage:Int) {
+        print("scrollFrom - \(currentPage) to " + (transition == .next ? "\(currentPage + 1)" : "\(currentPage - 1)"))
         pageControl.updateItem(currentPage, withTransition: transition, withCurrentPorgress: didScrollToProgress)
     }
     
-    func slideView(slideView:SlideView, didShowItem displayItem:Int) {
+    func slideView(_ slideView:SlideView, didShowItem displayItem:Int) {
         print("SHOW - \(displayItem)")
         pageControl.selectedPage = displayItem
     }
+}
 
-    
+
 //    func slideView(slideView:SlideView, didScrollToProgress:CGFloat, leftScroll:Bool, currentPage:Int) {
 ////        print("\(didScrollToProgress)")
 //        
@@ -81,5 +82,5 @@ extension ViewController: SlideViewDelegate {
 //    func slideView(slideView: SlideView, didEndScrolling currentPage: Int) {
 //        pageControl.selectedPage = currentPage
 //    }
-}
+//}
 

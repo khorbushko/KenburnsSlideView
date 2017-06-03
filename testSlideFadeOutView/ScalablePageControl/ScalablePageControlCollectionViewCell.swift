@@ -1,6 +1,6 @@
 //
 //  ScalablePageControlCollectionViewCell.swift
-//  testSlideFadeOutView
+//  
 //
 //  Created by Kirill Gorbushko on 30.09.16.
 //  Copyright © 2016 - present SigmaSoftware. All rights reserved.
@@ -10,15 +10,15 @@ import UIKit
 
 final class ScalablePageControlCollectionViewCell: BaseCollectionViewCell {
     
-    @IBOutlet private weak var fakeDotView: UIView!
-    private let InitialTransformScale:CGFloat = 0.3
+    @IBOutlet fileprivate weak var fakeDotView: UIView!
+    fileprivate let InitialTransformScale:CGFloat = 0.3
     
     var isSelectedPage:Bool = false {
         didSet {
             if isSelectedPage == true {
-                fakeDotView.transform = CGAffineTransformIdentity
+                fakeDotView.transform = CGAffineTransform.identity
             } else {
-                fakeDotView.transform = CGAffineTransformMakeScale(InitialTransformScale, InitialTransformScale)
+                fakeDotView.transform = CGAffineTransform(scaleX: InitialTransformScale, y: InitialTransformScale)
             }
         }
     }
@@ -28,14 +28,14 @@ final class ScalablePageControlCollectionViewCell: BaseCollectionViewCell {
         
         fakeDotView.layer.cornerRadius = 5
         fakeDotView.layer.borderWidth = 1
-        fakeDotView.layer.borderColor = fakeDotView.backgroundColor?.CGColor
+        fakeDotView.layer.borderColor = fakeDotView.backgroundColor?.cgColor
         fakeDotView.layer.masksToBounds = true
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        fakeDotView.transform = isSelectedPage ? CGAffineTransformIdentity : CGAffineTransformMakeScale(InitialTransformScale, InitialTransformScale)
+        fakeDotView.transform = isSelectedPage ? CGAffineTransform.identity : CGAffineTransform(scaleX: InitialTransformScale, y: InitialTransformScale)
     }
     
     override func prepareForReuse() {
@@ -50,9 +50,9 @@ final class ScalablePageControlCollectionViewCell: BaseCollectionViewCell {
 //        fakeDotView.transform = current == true ? CGAffineTransformIdentity : CGAffineTransformMakeScale(InitialTransformScale, InitialTransformScale)
 //    }
     
-    func applyTransformWithProgress(progress:CGFloat) {
+    func applyTransformWithProgress(_ progress:CGFloat) {
         let transform = (1 - InitialTransformScale) * progress
-        fakeDotView.transform = CGAffineTransformMakeScale(InitialTransformScale + transform, InitialTransformScale + transform)
+        fakeDotView.transform = CGAffineTransform(scaleX: InitialTransformScale + transform, y: InitialTransformScale + transform)
     }
     
 }

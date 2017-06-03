@@ -1,1 +1,0 @@
-based on https://github.com/muukii/CPKenburnsSlideshowView

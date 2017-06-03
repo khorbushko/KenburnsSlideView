@@ -24,6 +24,7 @@
 		93349C451D9F05C000022433 /* ScalablePageControlCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93349C441D9F05C000022433 /* ScalablePageControlCollectionViewCell.swift */; };
 		93349C471D9F05EA00022433 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93349C461D9F05EA00022433 /* BaseCollectionViewCell.swift */; };
 		93349C491D9F061700022433 /* ScalablePageControlCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93349C481D9F061700022433 /* ScalablePageControlCollectionViewCell.xib */; };
+		93D713AD1DA4E1B900233AE3 /* SlideTileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93D713AC1DA4E1B900233AE3 /* SlideTileView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		93349C441D9F05C000022433 /* ScalablePageControlCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalablePageControlCollectionViewCell.swift; sourceTree = "<group>"; };
 		93349C461D9F05EA00022433 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		93349C481D9F061700022433 /* ScalablePageControlCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScalablePageControlCollectionViewCell.xib; sourceTree = "<group>"; };
+		93D713AC1DA4E1B900233AE3 /* SlideTileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SlideTileView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			children = (
 				93349C371D9EA98D00022433 /* SlideTileObject.swift */,
 				93349C3B1D9EAAEA00022433 /* SlideTileView.swift */,
+				93D713AC1DA4E1B900233AE3 /* SlideTileView.xib */,
 				93349C321D9E308300022433 /* SlideScrollView.swift */,
 				93349C2A1D9E2D8F00022433 /* SlideView.swift */,
 				93349C2C1D9E2D9A00022433 /* SlideView.xib */,
@@ -148,6 +151,7 @@
 				TargetAttributes = {
 					93349C131D9E2D5B00022433 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0830;
 					};
 				};
 			};
@@ -177,6 +181,7 @@
 				93349C221D9E2D5B00022433 /* LaunchScreen.storyboard in Resources */,
 				93349C2D1D9E2D9A00022433 /* SlideView.xib in Resources */,
 				93349C431D9F04E700022433 /* ScalablePageControl.xib in Resources */,
+				93D713AD1DA4E1B900233AE3 /* SlideTileView.xib in Resources */,
 				93349C1F1D9E2D5B00022433 /* Assets.xcassets in Resources */,
 				93349C491D9F061700022433 /* ScalablePageControlCollectionViewCell.xib in Resources */,
 				93349C1D1D9E2D5B00022433 /* Main.storyboard in Resources */,
@@ -321,6 +326,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rainbowElephant.slideView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "843561a5-67a5-4ccf-8ef6-17b9ab8f398a";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -334,6 +340,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rainbowElephant.slideView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "843561a5-67a5-4ccf-8ef6-17b9ab8f398a";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

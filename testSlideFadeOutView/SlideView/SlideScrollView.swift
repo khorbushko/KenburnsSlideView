@@ -1,6 +1,6 @@
 //
 //  SlideScrollView.swift
-//  testSlideFadeOutView
+//
 //
 //  Created by Kirill Gorbushko on 30.09.16.
 //  Copyright © 2016 - present SigmaSoftware. All rights reserved.
@@ -9,8 +9,8 @@
 import UIKit
 
 protocol SlideScrollViewDelegate {
-    func slideScrollView(scrollView:SlideScrollView, didShowNextItem nextItem:Int, currentItem:Int)
-    func slideScrollView(scrollView:SlideScrollView, didShowPreviousItem previousItem:Int, currentItem:Int)
+    func slideScrollView(_ scrollView:SlideScrollView, didShowNextItem nextItem:Int, currentItem:Int)
+    func slideScrollView(_ scrollView:SlideScrollView, didShowPreviousItem previousItem:Int, currentItem:Int)
 }
 
 final class SlideScrollView: UIScrollView {
@@ -20,7 +20,7 @@ final class SlideScrollView: UIScrollView {
     var currentItem:Int = 0
     var fadeDuration = 0.3
     
-    private var animationInProgress:Bool = false
+    fileprivate var animationInProgress:Bool = false
     
     // MARK: - LifeCycle
     
@@ -34,10 +34,10 @@ final class SlideScrollView: UIScrollView {
     
     // MARK: - Public
     
-    func setContentOffset(contentOffset: CGPoint, slowAnimated: Bool) {
+    func setContentOffset(_ contentOffset: CGPoint, slowAnimated: Bool) {
         if slowAnimated == true {
             animationInProgress = true
-            UIView.animateWithDuration(fadeDuration, delay: 0, options: [.BeginFromCurrentState, .AllowUserInteraction ], animations: {
+            UIView.animate(withDuration: fadeDuration, delay: 0, options: [.beginFromCurrentState, .allowUserInteraction ], animations: {
                 super.setContentOffset(contentOffset, animated: false)
                 }, completion: { (_) in
                     self.animationInProgress = false
@@ -50,7 +50,7 @@ final class SlideScrollView: UIScrollView {
     
     // MARK: - Private
     
-    private func recenterContentIfNeeded() {
+    fileprivate func recenterContentIfNeeded() {
 
         //without infinite
 
@@ -68,7 +68,7 @@ final class SlideScrollView: UIScrollView {
         if distanceToCenter > 0 {
             //next
             if distanceToCenter >= bounds.width {
-                contentOffset = CGPointMake(CGFloat(ceilf(Float(contentOffsetX))), currentOffset.y)
+                contentOffset = CGPoint(x: CGFloat(ceilf(Float(contentOffsetX))), y: currentOffset.y)
                 let nextItem = currentItem + 2
                 slideDelegate?.slideScrollView(self, didShowNextItem: nextItem, currentItem: currentItem)
                 currentItem += 1
@@ -76,7 +76,7 @@ final class SlideScrollView: UIScrollView {
         } else {
             //prev
             if distanceToCenter <= -bounds.width {
-                contentOffset = CGPointMake(CGFloat(ceilf(Float(contentOffsetX))), currentOffset.y)
+                contentOffset = CGPoint(x: CGFloat(ceilf(Float(contentOffsetX))), y: currentOffset.y)
                 let prevItem = currentItem - 2
                 slideDelegate?.slideScrollView(self, didShowPreviousItem: prevItem, currentItem: currentItem)
                 currentItem -= 1

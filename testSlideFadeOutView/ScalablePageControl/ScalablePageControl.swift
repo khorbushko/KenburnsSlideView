@@ -1,6 +1,6 @@
 //
 //  ScalablePageControl.swift
-//  testSlideFadeOutView
+//  
 //
 //  Created by Kirill Gorbushko on 30.09.16.
 //  Copyright © 2016 - present SigmaSoftware. All rights reserved.
@@ -9,9 +9,9 @@
 import UIKit
 
 enum Transition:Int {
-    case Unknown = -1
-    case Next = 0
-    case Previous = 1
+    case unknown = -1
+    case next = 0
+    case previous = 1
 }
 
 final class ScalablePageControl : BaseView {
@@ -36,7 +36,7 @@ final class ScalablePageControl : BaseView {
             }
             let item = fromItem % itemsCount
             
-            for (index, cell) in pageControlCells.enumerate() {
+            for (index, cell) in pageControlCells.enumerated() {
                 if index == item {
                     cell.isSelectedPage = true
                 } else {
@@ -51,12 +51,12 @@ final class ScalablePageControl : BaseView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        collectionVIew.registerNib(ScalablePageControlCollectionViewCell.nib(), forCellWithReuseIdentifier: ScalablePageControlCollectionViewCell.identifier())
+        collectionVIew.register(ScalablePageControlCollectionViewCell.nib(), forCellWithReuseIdentifier: ScalablePageControlCollectionViewCell.identifier())
     }
     
     // MARK: - Public
     
-    func updateItem(itemIndex:Int, withTransition:Transition, withCurrentPorgress:CGFloat) {
+    func updateItem(_ itemIndex:Int, withTransition:Transition, withCurrentPorgress:CGFloat) {
         
         var fromItem = itemIndex
         if fromItem < 0 {
@@ -66,9 +66,9 @@ final class ScalablePageControl : BaseView {
         let fromItemIndex = fromItem % itemsCount
         
         var toItemIndex = fromItemIndex
-        if withTransition == .Next {
+        if withTransition == .next {
             toItemIndex += 1
-        } else if withTransition == .Previous {
+        } else if withTransition == .previous {
             toItemIndex -= 1
         }
         
@@ -93,12 +93,12 @@ final class ScalablePageControl : BaseView {
 extension ScalablePageControl : UICollectionViewDataSource {
     // MARK: - UICollectionViewDataSource
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return itemsCount
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ScalablePageControlCollectionViewCell.identifier(), forIndexPath: indexPath) as! ScalablePageControlCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScalablePageControlCollectionViewCell.identifier(), for: indexPath) as! ScalablePageControlCollectionViewCell
         pageControlCells.append(cell)
         if indexPath.row == selectedPage {
             cell.isSelectedPage = true
@@ -116,14 +116,14 @@ extension ScalablePageControl: UICollectionViewDelegate {
 extension ScalablePageControl : UICollectionViewDelegateFlowLayout {
     // MARK: - UICollectionViewDelegateFlowLayout
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height:CGFloat = collectionView.frame.height
         let width:CGFloat = 15
         
-        return CGSizeMake(width, height)
+        return CGSize(width: width, height: height)
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let insets = (bounds.width - CGFloat(itemsCount * 15)) / 2
         return UIEdgeInsetsMake(0, insets, 0, insets)
     }

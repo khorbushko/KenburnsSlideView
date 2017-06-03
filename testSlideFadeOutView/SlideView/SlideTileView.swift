@@ -1,6 +1,6 @@
 //
 //  SlideTileView.swift
-//  testSlideFadeOutView
+//  
 //
 //  Created by Kirill Gorbushko on 30.09.16.
 //  Copyright © 2016 - present SigmaSoftware. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SlideTileView : UIView {
+final class SlideTileView : BaseView {
     
     var titleLabel:UILabel = UILabel()
     
@@ -28,35 +28,35 @@ final class SlideTileView : UIView {
     
     // MARK: - Public
     
-    func updateWithTile(tile:SlideTileObject) {
+    func updateWithTile(_ tile:SlideTileObject) {
         titleLabel.text = tile.title
     }
     
     // MARK: - Private
     
-    private func prepareTileForReuse() {
+    fileprivate func prepareTileForReuse() {
         titleLabel.text = ""
     }
     
-    private func configureTile(slideTileObject:SlideTileObject?) {
+    fileprivate func configureTile(_ slideTileObject:SlideTileObject?) {
         prepareTileForReuse()
         if let object = slideTileObject {
             titleLabel.text = object.title
         }
     }
     
-    private func prepareSubviews() {
-        titleLabel.textColor = UIColor.whiteColor()
-        titleLabel.font = UIFont.systemFontOfSize(25)
-        titleLabel.textAlignment = .Center
+    fileprivate func prepareSubviews() {
+        titleLabel.textColor = UIColor.white
+        titleLabel.font = UIFont.systemFont(ofSize: 25)
+        titleLabel.textAlignment = .center
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         let views = [
             "subview" : titleLabel
         ]
         addSubview(titleLabel)
-        var constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-[subview]-|", options: [.AlignAllLeading, .AlignAllTrailing], metrics: nil, views: views)
-        constraints.appendContentsOf(NSLayoutConstraint.constraintsWithVisualFormat("V:|-350-[subview]-100-|", options: [.AlignAllTop, .AlignAllBottom], metrics: nil, views: views))
-        NSLayoutConstraint.activateConstraints(constraints)
+        var constraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-[subview]-|", options: [.alignAllLeading, .alignAllTrailing], metrics: nil, views: views)
+        constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:|-350-[subview]-100-|", options: [.alignAllTop, .alignAllBottom], metrics: nil, views: views))
+        NSLayoutConstraint.activate(constraints)
     }
     
 }

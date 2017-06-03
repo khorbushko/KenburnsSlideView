@@ -2,6 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "Знімок екрана 2017-06-03 о 10.34.15.png",
       "scale" : "1x"
     },
     {
@@ -10,7 +11,6 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "imgHair3@3x.jpg",
       "scale" : "3x"
     }
   ],

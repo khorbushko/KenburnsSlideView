@@ -1,6 +1,6 @@
 //
 //  SliderView.swift
-//  testSlideFadeOutView
+//  
 //
 //  Created by Kirill Gorbushko on 30.09.16.
 //  Copyright © 2016 - present SigmaSoftware. All rights reserved.
@@ -9,27 +9,27 @@
 import UIKit
 
 protocol SlideViewDelegate {
-    func slideView(slideView:SlideView, downloadImageURL:NSURL, completion:((image:UIImage)->Void))
-    func slideView(slideView:SlideView, didScrollToProgress:CGFloat, transition:Transition, currentPage:Int)
-    func slideView(slideView:SlideView, didShowItem displayItem:Int)
+    func slideView(_ slideView:SlideView, downloadImageURL:URL, completion:((_ image:UIImage)->Void))
+    func slideView(_ slideView:SlideView, didScrollToProgress:CGFloat, transition:Transition, currentPage:Int)
+    func slideView(_ slideView:SlideView, didShowItem displayItem:Int)
 }
 
 final class SlideView: BaseView {
     
-    private enum Order:Int {
-        case Previous = 0
-        case Current = 1
-        case Next = 2
+    fileprivate enum Order:Int {
+        case previous = 0
+        case current = 1
+        case next = 2
     }
     
-    @IBOutlet private weak var rootView: UIView!
-    @IBOutlet private weak var scrollView: SlideScrollView!
+    @IBOutlet fileprivate weak var rootView: UIView!
+    @IBOutlet fileprivate weak var scrollView: SlideScrollView!
     
-    private var coverView:UIView! = UIView()
-    private var gradientLayer:CAGradientLayer = CAGradientLayer()
+    fileprivate var coverView:UIView! = UIView()
+    fileprivate var gradientLayer:CAGradientLayer = CAGradientLayer()
     
-    private var imageViews:NSMutableArray = []  //views with images
-    private var tileViews:NSMutableArray = []   //objects to display each view info
+    fileprivate var imageViews:NSMutableArray = []  //views with images
+    fileprivate var tileViews:NSMutableArray = []   //objects to display each view info
     
     var delegate:SlideViewDelegate?
     var currentPage:Int = 0
@@ -39,9 +39,9 @@ final class SlideView: BaseView {
         }
     }
     
-    private var currentDisplayItem:Int = 0
+    fileprivate var currentDisplayItem:Int = 0
     
-    var previousDirection:Transition = .Unknown
+    var previousDirection:Transition = .unknown
     var stabilityCounter:Int = 0
 
     
@@ -61,65 +61,65 @@ final class SlideView: BaseView {
     
     // MARK: - Private
     
-    private func prepareView() {
+    fileprivate func prepareView() {
         for view in imageViews {
-            view.removeFromSuperview()
+            (view as AnyObject).removeFromSuperview()
         }
         imageViews.removeAllObjects()
         
         for view in tileViews {
-            view.removeFromSuperview()
+            (view as AnyObject).removeFromSuperview()
         }
         tileViews.removeAllObjects()
         
-        scrollView.contentSize = CGSizeMake(bounds.width * 3, bounds.height)
+        scrollView.contentSize = CGSize(width: bounds.width * 3, height: bounds.height)
         scrollView.delegate = self
-        scrollView.pagingEnabled = true
-        scrollView.contentOffset = CGPointMake(bounds.width, 0)
+        scrollView.isPagingEnabled = true
+        scrollView.contentOffset = CGPoint(x: bounds.width, y: 0)
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
-        scrollView.directionalLockEnabled = true
+        scrollView.isDirectionalLockEnabled = true
         scrollView.slideDelegate = self
         
         for item in 0..<3 {
             let view = UIImageView(frame: bounds)
-            imageViews.insertObject(view, atIndex: 0)
+            imageViews.insert(view, at: 0)
             rootView.insertSubview(view, belowSubview: scrollView)
             
             var rect = bounds
             rect.origin.x = bounds.width * CGFloat(item)
             let tileView = SlideTileView(frame: rect)
-            tileView.backgroundColor = UIColor.clearColor()
-            tileViews.addObject(tileView)
+            tileView.backgroundColor = UIColor.clear
+            tileViews.add(tileView)
     
             scrollView.addSubview(tileView)
         }
         
         gradientLayer.removeFromSuperlayer()
-        let rect = CGRectMake(0, 0, scrollView.contentSize.width, scrollView.contentSize.height)
+        let rect = CGRect(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
         gradientLayer.frame = rect
         gradientLayer.colors = [
-            UIColor.grayColor().colorWithAlphaComponent(0.1).CGColor,
-            UIColor.grayColor().colorWithAlphaComponent(0.4).CGColor,
-            UIColor.whiteColor().colorWithAlphaComponent(0.9).CGColor
+            UIColor.gray.withAlphaComponent(0.1).cgColor,
+            UIColor.gray.withAlphaComponent(0.4).cgColor,
+            UIColor.white.withAlphaComponent(0.9).cgColor
         ]
         gradientLayer.locations = [0.4, 0.6, 1]
-        scrollView.layer.insertSublayer(gradientLayer, atIndex: 0)
+        scrollView.layer.insertSublayer(gradientLayer, at: 0)
         
         coverView.removeFromSuperview()
         coverView = UIView(frame: bounds)
         coverView.backgroundColor = UIColor(white: 0, alpha: 0.7)
         coverView.alpha = 0
-        addSubview(coverView)
+//        addSubview(coverView)
         
         updateImages()
     }
     
-    private func updateImages(selectedIndex:Int = 0) {
+    fileprivate func updateImages(_ selectedIndex:Int = 0) {
         if imageViews.count == 3 {
-            if let currentView = imageViews[Order.Current.rawValue] as? UIImageView,
-                let previousView = imageViews[Order.Previous.rawValue] as? UIImageView,
-                let nextView = imageViews[Order.Next.rawValue] as? UIImageView,
+            if let currentView = imageViews[Order.current.rawValue] as? UIImageView,
+                let previousView = imageViews[Order.previous.rawValue] as? UIImageView,
+                let nextView = imageViews[Order.next.rawValue] as? UIImageView,
                 
                 let currentImage = tileAtIndex(selectedIndex),
                 let nextImage = tileAtIndex(selectedIndex+1),
@@ -129,16 +129,16 @@ final class SlideView: BaseView {
                 updateImage(nextImage, forView: nextView)
                 updateImage(prevImage, forView: previousView)
                 
-                rootView.insertSubview(nextView, atIndex: 0)
-                rootView.insertSubview(currentView, atIndex: 2)
-                rootView.insertSubview(previousView, atIndex: 1)
+                rootView.insertSubview(nextView, at: 0)
+                rootView.insertSubview(currentView, at: 2)
+                rootView.insertSubview(previousView, at: 1)
             }
         }
         
         if tileViews.count == 3 {
-            if let currentTile = tileViews[Order.Current.rawValue] as? SlideTileView,
-                let previousTile = tileViews[Order.Previous.rawValue] as? SlideTileView,
-                let nextTile = tileViews[Order.Next.rawValue] as? SlideTileView,
+            if let currentTile = tileViews[Order.current.rawValue] as? SlideTileView,
+                let previousTile = tileViews[Order.previous.rawValue] as? SlideTileView,
+                let nextTile = tileViews[Order.next.rawValue] as? SlideTileView,
                 
                 let currentImage = tileAtIndex(selectedIndex),
                 let nextImage = tileAtIndex(selectedIndex+1),
@@ -152,19 +152,19 @@ final class SlideView: BaseView {
         
     }
     
-    private func updateImage(tileDataObject:SlideTileObject, forView currentImageView:UIImageView) {
+    fileprivate func updateImage(_ tileDataObject:SlideTileObject, forView currentImageView:UIImageView) {
         if let image = tileDataObject.image {
             currentImageView.image = image
         } else {
             if let url = tileDataObject.imageURL {
-                delegate?.slideView(self, downloadImageURL: url, completion: { (image) in
+                delegate?.slideView(self, downloadImageURL: url as URL, completion: { (image) in
                     currentImageView.image = image
                 })
             }
         }
     }
     
-    private func tileAtIndex(tileIndex:Int) -> SlideTileObject? {
+    fileprivate func tileAtIndex(_ tileIndex:Int) -> SlideTileObject? {
         if imagesData.count == 0 {
             return nil
         }
@@ -172,7 +172,7 @@ final class SlideView: BaseView {
         return selectedTile
     }
     
-    private func validateItemIndex(itemIndex:Int) -> Int {
+    fileprivate func validateItemIndex(_ itemIndex:Int) -> Int {
         if (itemIndex < 0) {
             let item = imagesData.count - abs(itemIndex % imagesData.count)
             return item == imagesData.count ? 0 : item
@@ -188,7 +188,7 @@ final class SlideView: BaseView {
 extension SlideView: UIScrollViewDelegate {
     // MARK: - UIScrollViewDelegate
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         if scrollView == self.scrollView {
             let width = bounds.width
@@ -202,28 +202,28 @@ extension SlideView: UIScrollViewDelegate {
             coverView.alpha = CGFloat(gradientAlpha)
             
             if imageViews.count == 3 {
-                if let currentView = imageViews[Order.Current.rawValue] as? UIImageView,
-                    let previousView = imageViews[Order.Previous.rawValue] as? UIImageView,
-                    let nextView = imageViews[Order.Next.rawValue] as? UIImageView {
+                if let currentView = imageViews[Order.current.rawValue] as? UIImageView,
+                    let previousView = imageViews[Order.previous.rawValue] as? UIImageView,
+                    let nextView = imageViews[Order.next.rawValue] as? UIImageView {
                     
-                    var direction:Transition = .Next
+                    var direction:Transition = .next
                     if (scrollView.contentOffset.x - width) < 0 {
                         //drag right
                         currentView.alpha = CGFloat(alpha)
                         previousView.alpha = 1
                         nextView.alpha = 0
                         
-                        direction = .Previous
+                        direction = .previous
                     } else {
                         //drag left
                         currentView.alpha = CGFloat(alpha)
                         previousView.alpha = 0
                         nextView.alpha = 1
                         
-                        direction = .Next
+                        direction = .next
                     }
                     
-                    if previousDirection == .Unknown {
+                    if previousDirection == .unknown {
                         previousDirection = direction
                     }
                     if previousDirection != direction {
@@ -239,9 +239,9 @@ extension SlideView: UIScrollViewDelegate {
             }
             
             if tileViews.count == 3 {
-                if let currentTile = tileViews[Order.Current.rawValue] as? SlideTileView,
-                    let previousTile = tileViews[Order.Previous.rawValue] as? SlideTileView,
-                    let nextTile = tileViews[Order.Next.rawValue] as? SlideTileView {
+                if let currentTile = tileViews[Order.current.rawValue] as? SlideTileView,
+                    let previousTile = tileViews[Order.previous.rawValue] as? SlideTileView,
+                    let nextTile = tileViews[Order.next.rawValue] as? SlideTileView {
                     
                     currentTile.titleLabel.alpha = CGFloat(alpha)
                     previousTile.titleLabel.alpha = CGFloat(1 - alpha)
@@ -255,19 +255,19 @@ extension SlideView: UIScrollViewDelegate {
 
 extension SlideView: SlideScrollViewDelegate {
     // MARK: - SlideScrollViewDelegate
-    func slideScrollView(scrollView:SlideScrollView, didShowNextItem nextItem:Int, currentItem:Int) {
+    func slideScrollView(_ scrollView:SlideScrollView, didShowNextItem nextItem:Int, currentItem:Int) {
         currentPage = currentItem
         if imageViews.count == 3 {
-            if let currentView = imageViews[Order.Current.rawValue] as? UIImageView,
-                let previousView = imageViews[Order.Previous.rawValue] as? UIImageView,
-                let nextView = imageViews[Order.Next.rawValue] as? UIImageView {
+            if let currentView = imageViews[Order.current.rawValue] as? UIImageView,
+                let previousView = imageViews[Order.previous.rawValue] as? UIImageView,
+                let nextView = imageViews[Order.next.rawValue] as? UIImageView {
                 
                 updatePreviousView(currentView)
                 updateCurrentView(nextView)
                 updateNextView(previousView)
                 
                 if let currentTile = tileAtIndex(nextItem),
-                    let nextView = imageViews[Order.Next.rawValue] as? UIImageView {
+                    let nextView = imageViews[Order.next.rawValue] as? UIImageView {
                     updateImage(currentTile, forView: nextView)
                 }
             }
@@ -275,9 +275,9 @@ extension SlideView: SlideScrollViewDelegate {
         }
         
         if tileViews.count == 3 {
-            if let currentTile = tileViews[Order.Current.rawValue] as? SlideTileView,
-                let previousTile = tileViews[Order.Previous.rawValue] as? SlideTileView,
-                let nextTile = tileViews[Order.Next.rawValue] as? SlideTileView,
+            if let currentTile = tileViews[Order.current.rawValue] as? SlideTileView,
+                let previousTile = tileViews[Order.previous.rawValue] as? SlideTileView,
+                let nextTile = tileViews[Order.next.rawValue] as? SlideTileView,
                 
                 let currentImage = tileAtIndex(currentItem + 1),
                 let nextImage = tileAtIndex(nextItem),
@@ -292,30 +292,30 @@ extension SlideView: SlideScrollViewDelegate {
         delegate?.slideView(self, didShowItem: currentDisplayItem)
     }
     
-    private func updatePreviousView(view:UIImageView) {
-        imageViews.replaceObjectAtIndex(Order.Previous.rawValue, withObject: view)
+    fileprivate func updatePreviousView(_ view:UIImageView) {
+        imageViews.replaceObject(at: Order.previous.rawValue, with: view)
     }
-    private func updateCurrentView(view:UIImageView) {
-        imageViews.replaceObjectAtIndex(Order.Current.rawValue, withObject: view)
+    fileprivate func updateCurrentView(_ view:UIImageView) {
+        imageViews.replaceObject(at: Order.current.rawValue, with: view)
     }
-    private func updateNextView(view:UIImageView) {
-        imageViews.replaceObjectAtIndex(Order.Next.rawValue, withObject: view)
+    fileprivate func updateNextView(_ view:UIImageView) {
+        imageViews.replaceObject(at: Order.next.rawValue, with: view)
     }
     
-    func slideScrollView(scrollView:SlideScrollView, didShowPreviousItem previousItem:Int, currentItem:Int) {
+    func slideScrollView(_ scrollView:SlideScrollView, didShowPreviousItem previousItem:Int, currentItem:Int) {
         currentPage = currentItem
         
         if imageViews.count == 3 {
-            if let currentView = imageViews[Order.Current.rawValue] as? UIImageView,
-                let previousView = imageViews[Order.Previous.rawValue] as? UIImageView,
-                let nextView = imageViews[Order.Next.rawValue] as? UIImageView {
+            if let currentView = imageViews[Order.current.rawValue] as? UIImageView,
+                let previousView = imageViews[Order.previous.rawValue] as? UIImageView,
+                let nextView = imageViews[Order.next.rawValue] as? UIImageView {
                 
                 updatePreviousView(nextView)
                 updateCurrentView(previousView)
                 updateNextView(currentView)
                 
                 if let currentImage = tileAtIndex(previousItem),
-                    let previousView = imageViews[Order.Previous.rawValue] as? UIImageView {
+                    let previousView = imageViews[Order.previous.rawValue] as? UIImageView {
                     updateImage(currentImage, forView: previousView)
                 }
                 updateVisibilityPosition()
@@ -323,9 +323,9 @@ extension SlideView: SlideScrollViewDelegate {
         }
         
         if tileViews.count == 3 {
-            if let currentTile = tileViews[Order.Current.rawValue] as? SlideTileView,
-                let previousTile = tileViews[Order.Next.rawValue] as? SlideTileView,
-                let nextTile = tileViews[Order.Previous.rawValue] as? SlideTileView,
+            if let currentTile = tileViews[Order.current.rawValue] as? SlideTileView,
+                let previousTile = tileViews[Order.next.rawValue] as? SlideTileView,
+                let nextTile = tileViews[Order.previous.rawValue] as? SlideTileView,
                 
                 let currentImage = tileAtIndex(currentItem - 1),
                 let nextImage = tileAtIndex(previousItem),
@@ -341,19 +341,19 @@ extension SlideView: SlideScrollViewDelegate {
         delegate?.slideView(self, didShowItem: currentDisplayItem)
     }
     
-    private func updateVisibilityPosition() {
+    fileprivate func updateVisibilityPosition() {
         if imageViews.count == 3 {
-            if let currentView = imageViews[Order.Current.rawValue] as? UIImageView,
-                let previousView = imageViews[Order.Previous.rawValue] as? UIImageView,
-                let nextView = imageViews[Order.Next.rawValue] as? UIImageView {
+            if let currentView = imageViews[Order.current.rawValue] as? UIImageView,
+                let previousView = imageViews[Order.previous.rawValue] as? UIImageView,
+                let nextView = imageViews[Order.next.rawValue] as? UIImageView {
                 
                 previousView.alpha = 0
                 currentView.alpha = 1
                 nextView.alpha = 0
                 
-                rootView.insertSubview(nextView, atIndex: 0)
-                rootView.insertSubview(currentView, atIndex: 2)
-                rootView.insertSubview(previousView, atIndex: 1)
+                rootView.insertSubview(nextView, at: 0)
+                rootView.insertSubview(currentView, at: 2)
+                rootView.insertSubview(previousView, at: 1)
             }
         }
     }
